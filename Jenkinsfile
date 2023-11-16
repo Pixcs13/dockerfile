@@ -28,7 +28,7 @@ pipeline {
             steps {
                 sh '''
                 ssh jenkins@maria-deploy <<EOF
-                export YOUR_NAME=${YOUR_NAME}
+                export MYSQL_ROOT_PASSWORD=${YOUR_NAME}
                 docker network rm task2-net && echo "removed network" || echo "network already removed"
                 docker network create task2-net
                 docker stop nginx && echo "Stopped nginx" || echo "nginx not running"
@@ -37,8 +37,8 @@ pipeline {
                 docker rm flask-app && echo "removed flask-app" || echo "flask-app does not exist"
                 docker stop mysql && echo "Stopped flask-app" || echo "mysql not running"
                 docker rm mysql && echo "removed mysql" || echo "mysql does not exist"
-                docker run -d --name mysql --network task2-net -e YOUR_NAME=${YOUR_NAME} pixcs13/task2-db
-                docker run -d --name flask-app --network task2-net -e YOUR_NAME=${YOUR_NAME} pixcs13/task2-app
+                docker run -d --name mysql --network task2-net -e MYSQL_ROOT_PASSWORD=${YOUR_NAME} pixcs13/task2-db
+                docker run -d --name flask-app --network task2-net -e MYSQL_ROOT_PASSWORD=${YOUR_NAME} pixcs13/task2-app
                 docker run -d --name nginx --network task2-net -p 80:80 pixcs13/task2-nginx
                 '''
             }
