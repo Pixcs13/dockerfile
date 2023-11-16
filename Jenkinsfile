@@ -29,6 +29,9 @@ pipeline {
                 sh '''
                 ssh jenkins@maria-deploy <<EOF
                 export MYSQL_ROOT_PASSWORD=${YOUR_NAME}
+                docker pull pixcs13/task2-app
+                docker pull pixcs13/task2-db
+                docker pull pixcs13/task2-nginx
                 docker network rm task2-net && echo "removed network" || echo "network already removed"
                 docker network create task2-net
                 docker stop nginx && echo "Stopped nginx" || echo "nginx not running"
