@@ -17,11 +17,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: task2-service
+  name: flask-app
   labels:
     app: task2-app
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: task2-app
   ports:
