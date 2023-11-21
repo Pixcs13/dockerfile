@@ -8,8 +8,6 @@ spec:
   containers:
   - name: task2
     image: pixcs13/task2-app:latest 
-    ports: 
-    - containerPort: 5000
     env:
     - name: MYSQL_ROOT_PASSWORD
       value: Maria
@@ -26,5 +24,4 @@ spec:
     app: task2-app
   ports:
   - protocol: TCP
-    port: 80
-    targetPort: 5000
+    port: 5000
