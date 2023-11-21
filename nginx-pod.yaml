@@ -10,7 +10,7 @@ spec:
     configMap:
       name: nginx-config
   containers:
-  - image: nginx:alpine
+  - image: pixcs13/nginx
     name: nginx
     volumeMounts:
     - name: nginx-vol
