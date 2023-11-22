@@ -10,9 +10,10 @@ spec:
     image: pixcs13/task2-db:latest 
     env:
     - name: MYSQL_ROOT_PASSWORD
-      valueKeyRef:
-        name: db-root-password
-        key: password
+      valueFrom:
+        valueKeyRef:
+          name: db-root-password
+          key: password
 ---
 apiVersion: v1
 kind: Service
