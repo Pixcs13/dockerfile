@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        YOUR_NAME = credentials("MYSQL_ROOT_PASSWORD")
+        MYSQL_ROOT_PASSWORD = credentials("MYSQL_ROOT_PASSWORD")
     }
     stages {
         stage('Build') {
