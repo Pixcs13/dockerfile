@@ -11,7 +11,7 @@ spec:
     env:
     - name: MYSQL_ROOT_PASSWORD
       valueFrom:
-        valueKeyRef:
+        secretKeyRef:
           name: db-root-password
           key: password
 ---
